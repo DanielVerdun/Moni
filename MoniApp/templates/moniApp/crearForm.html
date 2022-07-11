@@ -1,0 +1,115 @@
+{% load static %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Solicitud de prestamo {% endblock %}</title>
+</head>
+
+
+<body style="background-color: lightblue; ">
+    {% if messages %}
+
+    <div class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %}
+            style="background-color:bisque; font-size:20px; text-align: center;">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#" style="margin: 5px;"> MONI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'crearForm' %}">Solicitar préstamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'listado' %}">Ingresar</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    {% block content %}
+    <div class="container">
+        <div class="row">
+
+            <img src="{% static '/img/Blog-7.png' %}" alt="" style="padding: 120px; border-radius: 140px;">
+        </div>
+    </div>
+
+    <h1 style="margin-block-start: 70px; text-align: center;">Por favor, ingresa tus datos </h1>
+
+    <div class="row">
+        <div class="col"><img src="{% static 'img/cuerpo-monicard-1.png'%}" alt="" style="width: 400px;
+            margin-inline-start: 30px;
+            border-radius: 99px;">
+        </div>
+        <div class="col">
+            {% if form.errors %}
+            <!--Comprobamos si hay errores en el formulario-->
+
+            <p style="color: red;">Por favor revisa este campo</p>
+
+            {% endif %}
+            <!--Creamos el formulario-->
+            <form action="" method="POST" style="margin-block-start: 50px;"> {% csrf_token %}
+                <!--Nunca olvidar token de seguridad!-->
+
+                <table>
+                    <p>*Por medio de este formulario podemos verificar <br> si aplicas al
+                        prestamo. Por favor, ingresa tus datos y presiona el botón <br>
+                        "Enviar solicutud de prestamo"</p>
+                    {{form.as_table}}
+
+                </table>
+
+                <button type="submit" class="btn btn-primary"
+                    style="margin-block-start: 10px; margin-inline: 70px;">Enviar
+                    solicutud de prestamo</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
+    {% endblock %}
+
+    <footer>
+        <div style="background-color: black; padding: 50px; margin-block-start: 5px; ">
+
+            <h3 style="color: waith; text-align: center;">Gracias por elegirnos</h3>
+
+
+        </div>
+    </footer>
+</body>
+
+</html>

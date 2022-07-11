@@ -1,0 +1,61 @@
+{% extends 'moniApp/home.html' %}
+
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %} Actualizar {% endblock %}
+
+{% block content %}
+
+
+<h1 style="margin-block-start: 70px; text-align: center;">Actualizar datos de solucitud</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% if messages %}
+
+    <div class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" {% endif %}
+            style="background-color:green;color: aliceblue; text-align: center; font-size:20px;">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                {% if actualizar %}
+                <form action="{% url  'actualizar_action' %}" method="post">
+                    {% else %}
+                    <form action="{% url  'crearForm'%}" method="post">
+                        {% endif %}
+
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+
+                        {% if actualizar %}
+                        {% bootstrap_button "Actualizar" button_type="submit" button_class="btn-primary" %}
+                        {% else %}
+                        {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary" %}
+                        {% endif %}
+
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'moniApp/home.html' %}
+
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %} Lista de solicitudes {% endblock %}
+
+{% block content %}
+
+<h1 style="margin-block-start: 70px; text-align: center;">Lista de prestamos solicitados</h1>
+
+<br>
+<br>
+{% if messages %}
+<div class="messages" style="text-align: center;">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="background-color:bisque; font-size:20px;">
+        {{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if prestamos %}
+
+
+<div class="container mt-3">
+    <h2>Lista de solicitudes</h2>
+    <p>En esta tabla se detalla cada uno de los prestamos solicitados</p>
+    <p>permitiendo administras los datos.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Genero</th>
+                <th>Email</th>
+                <th>Monto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        {% for prestamo in prestamos %}
+
+        <tbody>
+            <tr>
+                <td>{{prestamo.id}}</td>
+                <td>{{prestamo.nombre}}</td>
+                <td>{{prestamo.apellido}}</td>
+                <td>{{prestamo.dni}}</td>
+                <td>{{prestamo.genero}}</td>
+                <td>{{prestamo.email}}</td>
+                <td>{{prestamo.monto}}</td>
+                <td>
+                    {% url 'borrar' identificador=prestamo.id as borrar_url %}
+                    {% url 'actualizar' identificador=prestamo.id as actualizar_url %}
+                    {% bootstrap_button " X Eliminar" size="sm" button_class="btn-danger" button_type="link" href=borrar_url %}
+                    {% bootstrap_button "Editar" size="sm" button_class="btn-warning" button_type="link" href=actualizar_url %}
+
+                  </td>
+        </tbody>
+
+        {% endfor %}
+    </table>
+</div>
+
+<!-- <br>
+
+<li> <label style="font-weight: bold">Id: </label>{{p.id}} </li>
+<li> <label style="font-weight: bold">Nombre: </label>{{p.nombre }} </li>
+<li> <label style="font-weight: bold">Apellido: </label>{{p.apellido}} </li>
+<li> <label style="font-weight: bold">Dni: </label>{{p.dni}} </li>
+<li> <label style="font-weight: bold">Genero: </label> {{p.genero}} </li>
+<li> <label style="font-weight: bold">Email: </label>{{p.email}} </li>
+<li> <label style="font-weight: bold">Monto: </label>{{p.monto}} </li>
+
+<br>-->
+
+
+{% else %}
+<p>No tienes solicitudes cargadas</p>
+
+{% endif %}
+
+
+{% endblock %}

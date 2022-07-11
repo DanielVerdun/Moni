@@ -1,0 +1,41 @@
+{% extends 'moniApp/home.html' %}
+
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %} Login {% endblock %}
+
+
+{% block content %}
+
+<body>
+
+    <div class="container" style="margin-block-start: 129px">
+        <div class="row">
+            <div class="col-md-auto">
+
+                <form method="post">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons submit='Ingresar' reset="Cancel" %}{% endbuttons %}
+                </form>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <img src="{% static '/img/moni.png' %}" alt=""
+                    style="margin-inline-end: 80px; margin-block: 26px; border-radius: 20px;">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Home {% endblock %}</title>
+
+    <!-- Styles CSS-->
+    <link href="{% static '/css/moni.css' %}" rel="stylesheet">
+</head>
+
+
+<body style="background-color: lightblue;">
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#" style="margin: 5px;"> MONI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'home' %}">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'crearForm' %}">Solicitar préstamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'listado' %}">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'logout' %}">Cerrar Sesion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+
+    {% block content %}
+
+
+    <!-- Heading -->
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <br>
+                <br>
+                <img style="padding: 25px; border-radius: 20px; margin-block-start: 30px;" class="rounded float-start"
+                    src="{% static '/img/moni-photo-detail.png' %}" alt="">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Préstamos personales al instante </span>
+                        <!--<span class="section-heading-lower">El mejor stock</span>-->
+                    </h2>
+                    <p class="mb-3">Te presto hasta $155.000 en efectivo y podés
+                        devolverme en 6 cuotas. Fácil rápido y seguro
+                    </p>
+                </div>
+            </div>
+            <div style="text-align:center">
+                <a class="btn btn-primary"  href="{% url 'listado' %}">Ingresar</a>
+                <a class="btn btn-primary" href="{% url 'crearForm' %}">Solicitar préstamo</a>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+
+
+    <footer>
+        <div style="background-color: black; padding: 50px; margin-block-start: 5px; ">
+
+            <h3 style="color: waith; text-align: center;">Gracias por elegirnos</h3>
+
+
+        </div>
+    </footer>
+</body>
+
+</html>
