@@ -4,12 +4,13 @@
 MoniApp - Simulación. 
 -------------------------------------------------------------------
 
-Esta App  permite solicitar un prestamo cargando los datos del usuario en un formulario y luego 
-de hacer POST  guarda el registro en una BBDD. Esta App trabaja con models, views, templates
+Esta App  permite a un usuario solicitar un prestamo cargando los datos a traves de un formulario. 
+Conusme la API de Moni, validando su aprobación. 
+Luego de hacer POST  guarda el registro de solicitud en una BBDD.
+Esta App trabaja con models, views, templates
 
-Un Usuario administrador, el cual tiene  permisos de acceso a la lista de prestamos validando
-su identidad por medio de un login permitiendo
-realizar un CRUD sobre cada uno de los prestamos solicitados.
+El Usuario administrador del sistema, el cual tiene  permisos de acceso a la lista de prestamos validando
+su identidad por medio de un login, prodrá realizar un CRUD sobre cada uno de los prestamos solicitados.
 
 # Pre requisitos: 
 ------------------------------------
