@@ -5,14 +5,16 @@ MoniApp - Simulación.
 -------------------------------------------------------------------
 
 Esta App  permite solicitar un prestamo cargando los datos del usuario en un formulario y luego 
-de hacer POST los guarda el registro en una BBDD. Trabaja con models, views, templates
+de hacer POST  guarda el registro en una BBDD. Esta App trabaja con models, views, templates
 
-Contiene un Usuario administrador, el cual tiene  permisos de acceso a la lista de prestamos validando
+Un Usuario administrador, el cual tiene  permisos de acceso a la lista de prestamos validando
 su identidad por medio de un login permitiendo
 realizar un CRUD sobre cada uno de los prestamos solicitados.
 
-Pre requisitos: Python / Django
-Para poder correr el proyecto se recomienda crear un entorno virtual
+#Pre requisitos: 
+------------------------------------
+-Tener instalado Python / Django / virtualenv
+-Para poder correr el proyecto se recomienda crear un entorno virtual
 $ virtualenv venv
 
 Activiacion de entorno 
