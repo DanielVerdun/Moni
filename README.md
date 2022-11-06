@@ -11,7 +11,7 @@ Un Usuario administrador, el cual tiene  permisos de acceso a la lista de presta
 su identidad por medio de un login permitiendo
 realizar un CRUD sobre cada uno de los prestamos solicitados.
 
-#Pre requisitos: 
+# Pre requisitos: 
 ------------------------------------
 -Tener instalado Python / Django / virtualenv
 -Para poder correr el proyecto se recomienda crear un entorno virtual
